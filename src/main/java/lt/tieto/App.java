@@ -1,12 +1,12 @@
 package lt.tieto;
 
-import static spark.Spark.get;
+import static spark.Spark.*;
 
 public class App 
 {
     public static void main( String[] args )
     {
-        get("/", (req, res) -> "Home page");
+        redirect.get("/", "/hello");
 
         get("/hello", (req, res) -> "Hello World");
     }
