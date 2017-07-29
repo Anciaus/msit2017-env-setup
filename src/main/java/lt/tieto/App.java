@@ -4,18 +4,15 @@ import lt.tieto.services.HelloWorldServiceImpl;
 
 import static spark.Spark.get;
 
-/**
- * Hello world!
- *
- */
-public class App 
+public class App
 {
     public static void main( String[] args )
     {
         HelloWorldServiceImpl helloWorldService = new HelloWorldServiceImpl();
 
         get("/hello", (req, res) -> {
-            return helloWorldService.getCustomizedHello(req.queryParams("name"));
+            String name = req.queryParams("name");
+            return helloWorldService.getCustomizedHello(name != null ? name : "world!");
         });
     }
 }
