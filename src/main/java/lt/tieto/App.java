@@ -14,6 +14,8 @@ public class App
     {
         HelloWorldServiceImpl helloWorldService = new HelloWorldServiceImpl();
 
-        get("/hello", (req, res) -> helloWorldService.getCustomizedHello("Justas"));
+        get("/hello", (req, res) -> {
+            return helloWorldService.getCustomizedHello(req.queryParams("name"));
+        });
     }
 }
