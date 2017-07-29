@@ -1,5 +1,7 @@
 package lt.tieto;
 
+import lt.tieto.services.HelloWorldServiceImpl;
+
 import static spark.Spark.get;
 
 /**
@@ -10,6 +12,8 @@ public class App
 {
     public static void main( String[] args )
     {
-        get("/hello", (req, res) -> "Hello World");
+        HelloWorldServiceImpl helloWorldService = new HelloWorldServiceImpl();
+
+        get("/hello", (req, res) -> helloWorldService.getCustomizedHello("Justas"));
     }
 }
